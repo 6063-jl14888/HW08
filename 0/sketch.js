@@ -36,7 +36,6 @@ function setup() {
   xOff = (width - oImage.width) / 2;
   yOff = (height - oImage.height) / 2;
 
-  // copy image so we keep original intact
   mImage = oImage.get();
 }
 
