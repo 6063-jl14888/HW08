@@ -9,6 +9,7 @@ let yOff;
 
 function preload() {
   oImage = loadImage("./a.jpg"); 
+  oImagecopy = loadImage("./a.jpg"); 
 }
 
 function setup() {
@@ -49,6 +50,8 @@ function draw() {
   let selectedbColor = bcolorPicker.color();
   
   mImage.loadPixels();
+  oImagecopy.loadPixels();
+
   for (let i = 0; i < mImage.pixels.length; i += 4) {
 
     let r = mImage.pixels[i];
@@ -57,29 +60,29 @@ function draw() {
 
 
     if (r > 150 && g < 100 && b < 100) {
-      mImage.pixels[i] = red(selectedrColor);
-      mImage.pixels[i + 1] = green(selectedrColor);
-      mImage.pixels[i + 2] = blue(selectedrColor);
+      oImagecopy.pixels[i] = red(selectedrColor);
+      oImagecopy.pixels[i + 1] = green(selectedrColor);
+      oImagecopy.pixels[i + 2] = blue(selectedrColor);
     }
 
     if (r > 100 && r < 255 && g > 100 && g < 220 && b > 60 && b < 90) {
-      mImage.pixels[i] = red(selectedyColor);
-      mImage.pixels[i + 1] = green(selectedyColor);
-      mImage.pixels[i + 2] = blue(selectedyColor);
+      oImagecopy.pixels[i] = red(selectedyColor);
+      oImagecopy.pixels[i + 1] = green(selectedyColor);
+      oImagecopy.pixels[i + 2] = blue(selectedyColor);
     }
 
     if (r >= 0 && r < 40 && g >= 50 && g < 100 && b >= 100 && b < 150) {
-      mImage.pixels[i] = red(selectedbColor);
-      mImage.pixels[i + 1] = green(selectedbColor);
-      mImage.pixels[i + 2] = blue(selectedbColor);
+      oImagecopy.pixels[i] = red(selectedbColor);
+      oImagecopy.pixels[i + 1] = green(selectedbColor);
+      oImagecopy.pixels[i + 2] = blue(selectedbColor);
       console.log("Matched a blue pixel:", r, g, b);
     }
     
   }
-  mImage.updatePixels();
+  oImagecopy.updatePixels();
 
   push();
   translate(xOff, yOff);
-  image(mImage, 0, 0);
+  image(oImagecopy, 0, 0);
   pop();
 }
